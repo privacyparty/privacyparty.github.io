@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>privacy party</title>
+</head>
+  <body>
+    work in progress
+    <script>
+      
+      // Get the current URL
+      const url = new URL(window.location.href);
+      
+      // Create a URLSearchParams object from the query string
+      const params = new URLSearchParams(url.search);
+      
+      // Access query parameters by key
+      const paramValue = params.get('yourQueryKey'); // Replace 'yourQueryKey' with the actual query key
+      
+      console.log(paramValue); // Logs the value of 'yourQueryKey', or null if not found
+      
+      // If you want to loop through all query parameters
+      params.forEach((value, key) => {
+        console.log(key, value);
+      });
+      
+      
+    </script>
+  </body>
+</html>
