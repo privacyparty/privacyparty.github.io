@@ -1,28 +1,40 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>privacy party</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>privacy party</title>
 </head>
-  <body>
-    work in progress
+<body>
+    <h1>work in progress</h1>
+
+    <div id="output"></div>
+
     <script>
-      
-      // Get the current URL
-      const url = new URL(window.location.href);
-      
-      // Create a URLSearchParams object from the query string
-      const params = new URLSearchParams(url.search);
-      
-      // Access query parameters by key
-      const paramValue = params.get('yourQueryKey'); // Replace 'yourQueryKey' with the actual query key
-      
-      console.log(paramValue); // Logs the value of 'yourQueryKey', or null if not found
-      
-      // If you want to loop through all query parameters
-      params.forEach((value, key) => {
-        console.log(key, value);
-      });
-      
-      
+        // Function to parse query string into a JSON object
+        function parseQueryString(queryString) {
+            let params = new URLSearchParams(queryString);
+            let jsonObject = {};
+
+            // Loop through the parameters and build the JSON object
+            params.forEach((value, key) => {
+                jsonObject[key] = value;
+            });
+
+            return jsonObject;
+        }
+
+        // Get the current URL query string
+        const queryString = window.location.search; // Returns the part of the URL after "?"
+        
+        // Parse the query string and convert it to JSON
+        const jsonObject = parseQueryString(queryString);
+
+        // Output the parsed JSON data to the HTML
+        document.getElementById('output').textContent = JSON.stringify(jsonObject, null, 2);
+
+        // Optionally, log it in the console as well
+        console.log(jsonObject);
     </script>
-  </body>
+</body>
 </html>
